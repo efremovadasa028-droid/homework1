@@ -1,0 +1,53 @@
+lecture = ["Аня", "Борис", "Вика", "Гоша", "Аня"]
+seminar = ["Вика", "Дима", "Борис", "Ева"]
+
+lec = []
+sem = []
+
+for i in lecture:
+    lec.append(i)
+
+lec.sort()
+
+for i in range(len(lec)-1):
+    if lec[i] == lec[i-1]: lec.remove(lec[i-1])
+
+for i in seminar:
+    sem.append(i)
+
+sem.sort()
+
+groups = {}
+
+for w in (lec+sem):
+    key = w[0]
+    if key not in groups:
+        groups[key] = []
+    groups[key].append(w)
+print('всего уникальных студентов:',len(groups))
+
+ans2 = []
+ans3 = []
+ans_ = []
+
+for i in lec:
+    for j in sem:
+        if i == j: ans2.append(i)
+        if i != j and i not in sem: ans3.append(i)
+        if i != j: ans_.append([i,j])
+
+print('на обеих парах', ans2)
+
+for i in ans3:
+    while ans3.count(i)>1: ans3.remove(i)
+
+print('только на лекции', ans3)
+
+ans4 = []
+
+for i in ans_:
+    x,y = i
+    if x not in ans4: ans4.append(x)
+    if y not in ans4: ans4.append(y)
+
+print('хотя бы на одной', ans4)

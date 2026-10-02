@@ -1,0 +1,9 @@
+#nums = [4, 1, 7, 7, 3]   # вывод: 4
+#nums = [10, 3]           # вывод: 3
+nums = [5, 5, 5]         # вывод: Второго по величине элемента нет
+ma = max(nums)
+for i in nums:
+    if i == ma: nums.remove(i)
+if ma in nums: nums.remove(ma)
+if len(nums)>0: print(max(nums))
+else: print('второго по величине элемента нет')
